@@ -1,0 +1,6 @@
+@Manipulae.Api_HostAddress = http://localhost:5032
+
+GET {{Manipulae.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
