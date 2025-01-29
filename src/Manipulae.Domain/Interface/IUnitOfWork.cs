@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Manipulae.Domain.Interface.Video
+namespace Manipulae.Domain.Interface
 {
-    public interface IVideoDeleteRepository
+    public interface IUnitOfWork
     {
-        Task Delete(long id);
+        Task Commit();
     }
 }
