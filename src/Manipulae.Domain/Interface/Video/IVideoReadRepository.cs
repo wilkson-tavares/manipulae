@@ -10,6 +10,7 @@ namespace Manipulae.Domain.Interface.Video
 {
     public interface IVideoReadRepository
     {
+        Task<VideoEntity?> GetByIdAsync(long id);
         Task<IEnumerable<VideoEntity>> Filter(VideoRequest request);
     }
 }

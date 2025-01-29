@@ -23,6 +23,11 @@ namespace Manipulae.Infrastructure.DataAccess.Repositories
             _dbContext = manipulaeDbContext;
         }
 
+        public async Task<VideoEntity?> GetByIdAsync(long id)
+        {
+            return await _dbContext.Videos.FirstOrDefaultAsync(x => x.Id == id);
+        }
+
         public async Task<IEnumerable<VideoEntity>> Filter(VideoRequest request)
         {
             var query = _dbContext.Videos.AsQueryable();
