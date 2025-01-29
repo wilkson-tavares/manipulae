@@ -8,12 +8,12 @@ namespace Manipulae.Domain.Requests.Video
 {
     public class VideoRequest
     {
-        public string Titulo { get; set; } = string.Empty;
-        public string Autor { get; set; } = string.Empty;
-        public TimeSpan Duracao { get; set; }
-        public DateTime DataCriacao { get; set; }
-        public string Descricao { get; set; } = string.Empty;
-        public string Canal { get; set; } = string.Empty;
-        public bool Excluido { get; set; }
+        public string? Titulo { get; set; }
+        public string? Autor { get; set; }
+        public TimeSpan? Duracao { get; set; }
+        public DateTime? DataCriacao { get; set; }
+        public string? Descricao { get; set; }
+        public string? Canal { get; set; }
+        public string? q { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Manipulae.Domain.Entities;
+using Manipulae.Domain.Requests.Video;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,6 @@ namespace Manipulae.Domain.Interface.Video
 {
     public interface IVideoReadRepository
     {
-        Task<List<VideoEntity>> Filter(VideoEntity videoEntity);
+        Task<IEnumerable<VideoEntity>> Filter(VideoRequest request);
     }
 }
