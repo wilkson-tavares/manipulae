@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Manipulae.Domain.Responses
+namespace Manipulae.Domain.Responses.Video
 {
     public class RegisteredVideoResponse
     {
+        public long Id { get; set; }
         public string Titulo { get; set; } = string.Empty;
         public string Autor { get; set; } = string.Empty;
         public TimeSpan Duracao { get; set; }

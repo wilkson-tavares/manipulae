@@ -2,7 +2,7 @@
 using Manipulae.Domain.Interface;
 using Manipulae.Domain.Interface.Video;
 using Manipulae.Domain.Requests.Video;
-using Manipulae.Domain.Responses;
+using Manipulae.Domain.Responses.Video;
 using Manipulae.Exception.ExceptionBase;
 using System;
 using System.Collections.Generic;

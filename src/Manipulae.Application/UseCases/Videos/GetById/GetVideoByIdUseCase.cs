@@ -1,21 +1,21 @@
 ﻿using AutoMapper;
 using Manipulae.Domain.Interface.Video;
-using Manipulae.Domain.Requests.Video;
 using Manipulae.Domain.Responses.Video;
+using Manipulae.Exception.ExceptionBase;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Manipulae.Application.UseCases.Videos.Filter
+namespace Manipulae.Application.UseCases.Videos.GetById
 {
-    public class FilterVideoUseCase : IFilterVideoUseCase
+    internal class GetVideoByIdUseCase : IGetVideoByIdUseCase
     {
         private readonly IVideoReadRepository _repository;
         private readonly IMapper _mapper;
 
-        public FilterVideoUseCase(
+        public GetVideoByIdUseCase(
             IVideoReadRepository repository, 
             IMapper mapper)
         {
@@ -23,14 +23,13 @@ namespace Manipulae.Application.UseCases.Videos.Filter
             _mapper = mapper;
         }
 
-        public async Task<ListVideoResponse> Execute(VideoRequest req)
+        public async Task<RegisteredVideoResponse> Execute(long id)
         {
-            var result = await _repository.Filter(req);
+            var result = await _repository.GetByIdAsync(id);
 
-            return new ListVideoResponse
-            {
-                data = _mapper.Map<List<ShortVideoResponse>>(result)
-            };
+            return result is null
+                ? throw new NotFoundException("Video Not Found")
+                : _mapper.Map<RegisteredVideoResponse>(result);
         }
     }
 }

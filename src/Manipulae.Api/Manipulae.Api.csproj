@@ -11,7 +11,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\Manipulae.Application\Manipulae.Application.csproj" />
+    <ProjectReference Include="..\Manipulae.Domain\Manipulae.Domain.csproj" />
+    <ProjectReference Include="..\Manipulae.Exception\Manipulae.Exception.csproj" />
   </ItemGroup>
 
 </Project>

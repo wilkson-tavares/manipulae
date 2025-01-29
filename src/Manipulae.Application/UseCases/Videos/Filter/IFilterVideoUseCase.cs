@@ -1,5 +1,5 @@
 ﻿using Manipulae.Domain.Requests.Video;
-using Manipulae.Domain.Responses;
+using Manipulae.Domain.Responses.Video;
 using System;
 using System.Collections.Generic;
 using System.Linq;

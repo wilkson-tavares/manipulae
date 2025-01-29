@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Manipulae.Infrastructure.DataAccess.Repositories
+namespace Manipulae.Infrastructure.DataAccess.Repositories.Video
 {
     public class VideoRepository :
         IVideoReadRepository,
@@ -56,7 +56,7 @@ namespace Manipulae.Infrastructure.DataAccess.Repositories
         }
 
         public async Task Delete(long id)
-        { 
+        {
             var result = await _dbContext.Videos.FindAsync(id);
 
             _dbContext

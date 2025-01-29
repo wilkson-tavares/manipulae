@@ -8,7 +8,7 @@ namespace Manipulae.Domain.Entities
 {
     public class VideoEntity
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         public string Titulo { get; set; } = string.Empty;
         public string Autor { get; set; } = string.Empty;
         public TimeSpan Duracao { get; set; }

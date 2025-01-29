@@ -1,7 +1,15 @@
 ﻿using Manipulae.Domain.Interface;
+using Manipulae.Domain.Interface.Security.Cryptography;
+using Manipulae.Domain.Interface.Security.Tokens;
+using Manipulae.Domain.Interface.Service.LoggedUser;
+using Manipulae.Domain.Interface.User;
 using Manipulae.Domain.Interface.Video;
 using Manipulae.Infrastructure.DataAccess;
-using Manipulae.Infrastructure.DataAccess.Repositories;
+using Manipulae.Infrastructure.DataAccess.Repositories.User;
+using Manipulae.Infrastructure.DataAccess.Repositories.Video;
+using Manipulae.Infrastructure.Security.Cryptography;
+using Manipulae.Infrastructure.Security.Tokens;
+using Manipulae.Infrastructure.Service.LoggedUser;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,6 +26,10 @@ namespace Manipulae.Infrastructure
     {
         public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
+            services.AddScoped<IPasswordEncripter, PasswordEncripter>();
+            services.AddScoped<ILoggedUser, LoggedUser>();
+
+            AddToken(services, configuration);
             AddRepositories(services);
             AddDbContext(services, configuration);
         }
@@ -37,6 +49,19 @@ namespace Manipulae.Infrastructure
             services.AddScoped<IVideoReadRepository, VideoRepository>();
             services.AddScoped<IVideoUpdateRepository, VideoRepository>();
             services.AddScoped<IVideoWriteRepository, VideoRepository>();
+
+            services.AddScoped<IUserDeleteRepository, UsersRepository>();
+            services.AddScoped<IUserReadRepository, UsersRepository>();
+            services.AddScoped<IUserUpdateRepository, UsersRepository>();
+            services.AddScoped<IUserWriteRepository, UsersRepository>();
+        }
+
+        private static void AddToken(IServiceCollection services, IConfiguration configuration)
+        {
+            var expirationTimeMinutes = ConfigurationBinder.GetValue<uint>(configuration, "Settings:Jwt:ExpiresMinutes");
+            var signingKey = ConfigurationBinder.GetValue<string>(configuration, "Settings:Jwt:SigningKey");
+
+            services.AddScoped<IJwtTokenGenerator>(config => new JwtTokenGenetator(expirationTimeMinutes, signingKey!));
         }
     }
 }
