@@ -24,7 +24,7 @@ namespace Manipulae.Infrastructure
 
         private static void AddDbContext(IServiceCollection services, IConfiguration configuration)
         {
-            var connectionString = configuration.GetConnectionString("CashflowConnection");
+            var connectionString = configuration.GetConnectionString("DefaultConnection");
 
             services.AddDbContext<ManipulaeDbContext>(options =>
                 options.UseSqlite(connectionString));
