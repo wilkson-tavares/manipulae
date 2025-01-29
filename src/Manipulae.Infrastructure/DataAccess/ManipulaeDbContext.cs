@@ -13,6 +13,7 @@ namespace Manipulae.Infrastructure.DataAccess
         public ManipulaeDbContext(DbContextOptions<ManipulaeDbContext> options) : base(options) { }
 
         public DbSet<VideoEntity> Videos { get; set; }
+        public DbSet<UserEntity> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

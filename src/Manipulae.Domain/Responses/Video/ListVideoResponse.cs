@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Manipulae.Domain.Responses
+namespace Manipulae.Domain.Responses.Video
 {
     public class ListVideoResponse
     {
