@@ -8,6 +8,6 @@ namespace Manipulae.Domain.Responses
 {
     public class ListVideoResponse
     {
-        public List<ShortVideoResponse> Expenses { get; set; } = new List<ShortVideoResponse>();
+        public List<ShortVideoResponse> data { get; set; } = new List<ShortVideoResponse>();
     }
 }
