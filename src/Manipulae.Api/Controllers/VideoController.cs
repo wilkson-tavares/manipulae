@@ -6,6 +6,7 @@ using Manipulae.Application.UseCases.Videos.Update;
 using Manipulae.Domain.Requests.Video;
 using Manipulae.Domain.Responses.Error;
 using Manipulae.Domain.Responses.Video;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -47,9 +48,10 @@ namespace Manipulae.Api.Controllers
         [HttpGet]
         [ProducesResponseType(typeof(ListVideoResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status204NoContent)]
+        [Authorize]
         public async Task<IActionResult> FilterAllVideos(
             [FromServices] IFilterVideoUseCase useCase,
-            [FromBody] VideoRequest req)
+            [FromQuery] VideoRequest req)
         {
             var response = await useCase.Execute(req);
 

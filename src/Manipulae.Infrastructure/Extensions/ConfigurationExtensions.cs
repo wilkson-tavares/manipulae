@@ -13,5 +13,7 @@ namespace Manipulae.Infrastructure.Extensions
         {
             return configuration["YouTubeApiKey"];
         }
+
+
     }
 }

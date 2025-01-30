@@ -28,7 +28,7 @@ namespace Manipulae.Application.UseCases.Users.Update
         }
         public async Task<UserProfileResponse> Execute(UpdateUserRequest req)
         {
-            var loggedUser = await _loggedUser.GetAsync();
+            var loggedUser = await _loggedUser.GetAsync(); ///fazer o mesmo para o service do youtube
 
             await Validate(req, loggedUser.Email);
 

@@ -2,6 +2,7 @@
 using Manipulae.Domain.Interface.Security.Cryptography;
 using Manipulae.Domain.Interface.Security.Tokens;
 using Manipulae.Domain.Interface.Service.LoggedUser;
+using Manipulae.Domain.Interface.Service.YoutubeApi;
 using Manipulae.Domain.Interface.User;
 using Manipulae.Domain.Interface.Video;
 using Manipulae.Infrastructure.DataAccess;
@@ -10,6 +11,7 @@ using Manipulae.Infrastructure.DataAccess.Repositories.Video;
 using Manipulae.Infrastructure.Security.Cryptography;
 using Manipulae.Infrastructure.Security.Tokens;
 using Manipulae.Infrastructure.Service.LoggedUser;
+using Manipulae.Infrastructure.Service.YoutubeApi;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -28,6 +30,7 @@ namespace Manipulae.Infrastructure
         {
             services.AddScoped<IPasswordEncripter, PasswordEncripter>();
             services.AddScoped<ILoggedUser, LoggedUser>();
+            services.AddScoped<IYoutubeService, YouTubeService>();
 
             AddToken(services, configuration);
             AddRepositories(services);

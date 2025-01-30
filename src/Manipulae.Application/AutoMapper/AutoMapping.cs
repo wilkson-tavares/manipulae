@@ -14,6 +14,7 @@ namespace Manipulae.Application.AutoMapper
         {
             RequestToEntity();
             EntityToResponse();
+            ResponseToRequest();
         }
 
         private void RequestToEntity()
@@ -31,6 +32,11 @@ namespace Manipulae.Application.AutoMapper
             CreateMap<VideoEntity, ShortVideoResponse>();
 
             CreateMap<UserEntity, UserProfileResponse>();
+        }
+
+        private void ResponseToRequest()
+        {
+            CreateMap<ShortVideoResponse, VideoRequest>();
         }
     }
 }
