@@ -10,13 +10,8 @@ using Manipulae.Application.UseCases.Videos.Filter;
 using Manipulae.Application.UseCases.Videos.GetById;
 using Manipulae.Application.UseCases.Videos.Register;
 using Manipulae.Application.UseCases.Videos.Update;
-using Manipulae.Domain.Interface.Video;
+using Manipulae.Application.UseCases.Youtube;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Manipulae.Application
 {
@@ -50,6 +45,8 @@ namespace Manipulae.Application
             services.AddScoped<IDeleteUserAccountUseCase, DeleteUserAccountUseCase>();
             
             services.AddScoped<IDoLoginUseCase, DoLoginUseCase>();
+
+            services.AddScoped<IYoutubeUseCase, YoutubeUseCase>();
         }
         #endregion
     }

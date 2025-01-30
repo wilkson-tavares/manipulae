@@ -1,10 +1,5 @@
 ﻿using Manipulae.Domain.Interface;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Manipulae.Infrastructure.DataAccess
 {
@@ -25,7 +20,7 @@ namespace Manipulae.Infrastructure.DataAccess
             }
             catch (DbUpdateException ex)
             {
-                throw new Exception($"Error: ", ex);
+                throw new System.Exception($"Error: ", ex); // Fully qualify the Exception type
             }
         }
     }

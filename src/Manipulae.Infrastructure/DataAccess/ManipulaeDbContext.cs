@@ -1,5 +1,7 @@
 ﻿using Manipulae.Domain.Entities;
+using Manipulae.Domain.Enums;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +20,12 @@ namespace Manipulae.Infrastructure.DataAccess
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<VideoEntity>()
+           .Property(v => v.Duracao)
+           .HasConversion(
+               v => v.ToString(),
+               v => (VideoDurationEnum)Enum.Parse(typeof(VideoDurationEnum), v));
         }
     }
 }
