@@ -30,6 +30,7 @@ namespace Manipulae.Api.Controllers
         [HttpPost]
         [ProducesResponseType(typeof(RegisteredVideoResponse), StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status400BadRequest)]
+        [Authorize]
         public async Task<IActionResult> RegisterAsync(
             [FromServices] IRegisterVideoUseCase useCase,
             [FromBody] VideoRequest req)
@@ -71,6 +72,7 @@ namespace Manipulae.Api.Controllers
         [Route("{id}")]
         [ProducesResponseType(typeof(RegisteredVideoResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status404NotFound)]
+        [Authorize]
         public async Task<IActionResult> GetVideoById(
             [FromServices] IGetVideoByIdUseCase useCase,
             long id)
@@ -94,6 +96,7 @@ namespace Manipulae.Api.Controllers
         [Route("{id}")]
         [ProducesResponseType(typeof(RegisteredVideoResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status400BadRequest)]
+        [Authorize]
         public async Task<IActionResult> Update(
             [FromRoute] long id,
             [FromBody] VideoRequest req,
@@ -114,6 +117,7 @@ namespace Manipulae.Api.Controllers
         [Route("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status404NotFound)]
+        [Authorize]
         public async Task<IActionResult> Delete(
             [FromServices] IDeleteVideoUseCase useCase, [FromRoute] long id)
         {
